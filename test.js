@@ -31,4 +31,26 @@ describe("fn-stack", function() {
 
 		this.stack.run([true], callback);
 	});
+
+	it("should add only on callback function", function(done) {
+		this.stack.push(function(value, next) {
+			expect(value).to.be.a("string");
+			expect(value).to.equal("foo");
+			next(null);
+		});
+
+		this.stack.push(function(value, next) {
+			expect(arguments.length).to.equal(2);
+			next(null);
+		});
+
+		this.stack.run(["foo"], function callback(err) {
+			if (err) {
+				throw err;
+			}
+
+			expect(err).to.be.a("null");
+			done();
+		});
+	});
 });
