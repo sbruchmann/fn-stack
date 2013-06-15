@@ -21,8 +21,6 @@ $ npm install
 'use strict';
 
 var FNStack = require("fn-stack");
-var fs = require("fs");
-
 var stack = new FNStack();
 
 this.stack.push(function log(value, next) {
