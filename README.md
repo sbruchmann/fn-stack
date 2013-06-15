@@ -23,7 +23,7 @@ $ npm install
 var FNStack = require("fn-stack");
 var stack = new FNStack();
 
-this.stack.push(function log(value, next) {
+stack.push(function log(value, next) {
     process.nextTick(function() {
         console.log(value); // => "Hello, world!"
         next(null);
