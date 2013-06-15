@@ -41,4 +41,4 @@ stack.run(["Hello, world!"], function onDone(err) {
 
 [git]: http://git-scm.org
 [npm]: http://npmjs.org
-[stack]: https://github.com/stack/creationix
+[stack]: https://github.com/creationix/stack
