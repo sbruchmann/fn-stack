@@ -53,4 +53,22 @@ describe("fn-stack", function() {
 			done();
 		});
 	});
+
+	it("should not depend on arguments passed to #run", function(done) {
+		var callback = function callback(err) {
+			if (err) {
+				throw err;
+			}
+
+			expect(err).to.be.a("null");
+			done();
+		};
+
+		this.stack.push(function(next) {
+			expect(arguments.length).to.equal(1);
+			next(null);
+		});
+
+		this.stack.run(callback);
+	});
 });

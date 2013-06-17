@@ -44,8 +44,15 @@ FNStack.prototype.push = function push() {
  * @return {FNStack}
  */
 FNStack.prototype.run = function run(args, callback) {
-	var callbackIndex = args.length;
-	var queue = _.map(this.stack, function iterator(fn) {
+	var callbackIndex, queue;
+
+	if (!callback && typeof args === "function") {
+		callback = args;
+		args = [];
+	}
+
+	callbackIndex = args.length;
+	queue = _.map(this.stack, function iterator(fn) {
 		return function task(next) {
 			args[callbackIndex] = next;
 			fn.apply(null, args);
