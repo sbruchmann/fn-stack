@@ -1,6 +1,6 @@
 {
   "name": "fn-stack",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Runs functions asynchronously.",
   "repository": {
     "type": "git",
