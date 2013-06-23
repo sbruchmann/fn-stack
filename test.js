@@ -14,7 +14,6 @@ describe("fn-stack", function() {
 				throw err;
 			}
 
-			console.log("result", result);
 			expect(err).to.be.a("null");
 			expect(result).to.be.a("boolean");
 			expect(result).to.equal(true);
