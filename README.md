@@ -17,8 +17,8 @@ $ npm install
 
 ## Usage
 
-```sh
-'use strict';
+```javascript
+"use strict";
 
 var FNStack = require("fn-stack");
 var stack = new FNStack();
