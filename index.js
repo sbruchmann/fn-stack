@@ -24,11 +24,13 @@ function FNStack() {
 }
 
 /**
- * Adds one or more functions to the current stack.
+ * Adds one or more functions to the current stack. This functions
+ * is aliased as `use`.
  * @param  {Function} fn
  * @return {FNStack}
  */
-FNStack.prototype.push = function push() {
+FNStack.prototype.push =
+FNStack.prototype.use = function push() {
 	var args = _.reject(slice.call(arguments, 0), function iterator(val) {
 		return typeof val !== "function";
 	});
