@@ -3,6 +3,7 @@
 // Module dependencies
 var _ = require("lodash");
 var async = require("async");
+var asyncErr = require("async-stacktrace");
 
 // Cache references to `Array.prototype` methods
 var arrProto = Array.prototype;
@@ -68,14 +69,20 @@ FNStack.prototype.run = function run(args, callback) {
 	callbackIndex = args.length;
 	queue = _.map(this.stack, function iterator(fn) {
 		return function task(next) {
-			args[callbackIndex] = next;
+			args[callbackIndex] = function $next(err) {
+				if (asyncErr(err, next)) {
+					return;
+				};
+
+				next(null);
+			};
 			fn.apply(context, args);
 		}
 	});
 
 	async.series(queue, function onQueueCompleted(err) {
-		if (err) {
-			return callback(err);
+		if (asyncErr(err, callback)) {
+			return;
 		}
 
 		callback.apply(null, concat.call([null], args));
