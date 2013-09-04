@@ -18,10 +18,21 @@ function FNStack() {
 		return typeof val !== "function";
 	});
 
+	this._context = null;
 	this.stack = stack;
 
 	return this;
 }
+
+/**
+ * Specifies the context which all middleware will be bound to.
+ * @param  {Object} context
+ * @return {FNStack}
+ */
+FNStack.prototype.context = function context(context) {
+	this._context = context;
+	return this;
+};
 
 /**
  * Adds one or more functions to the current stack. This functions
@@ -46,6 +57,7 @@ FNStack.prototype.use = function push() {
  * @return {FNStack}
  */
 FNStack.prototype.run = function run(args, callback) {
+	var context = this._context;
 	var callbackIndex, queue;
 
 	if (!callback && typeof args === "function") {
@@ -57,7 +69,7 @@ FNStack.prototype.run = function run(args, callback) {
 	queue = _.map(this.stack, function iterator(fn) {
 		return function task(next) {
 			args[callbackIndex] = next;
-			fn.apply(null, args);
+			fn.apply(context, args);
 		}
 	});
 

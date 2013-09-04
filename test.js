@@ -70,4 +70,29 @@ describe("fn-stack", function() {
 
 		this.stack.run(callback);
 	});
+
+	describe("#context", function() {
+		it("should bind middleware to the given context", function(done) {
+			var context = {
+				hello: "world"
+			};
+
+			this.stack.context(context);
+
+			this.stack.use(function(next) {
+				expect(this.hello).to.be.ok;
+				expect(this.hello).to.equal(context.hello);
+				next(null);
+			});
+
+			this.stack.run(function onDone(err) {
+				if (err) {
+					throw err;
+				}
+
+				expect(err).to.be.a("null");
+				done();
+			});
+		});
+	});
 });
