@@ -1,5 +1,10 @@
 # Changelog
 
+0.1.4
+  * Callback is now run in the same context as middleware
+  * Deprecated FNStack#push in favor of FNStack#use
+  * Housekeeping
+
 0.1.3
   * Bump version to 0.1.3
   * Implement async-stacktrace
