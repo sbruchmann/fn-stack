@@ -94,5 +94,23 @@ describe("fn-stack", function() {
 				done();
 			});
 		});
+
+		it("should bind the callback to context", function(done) {
+			var ctx = {
+				hello: "world"
+			};
+
+			this.stack.context(ctx);
+
+			this.stack.push(function(next) {
+				process.nextTick(next);
+			});
+
+			this.stack.run(function() {
+				expect(this).to.have.property("hello");
+				expect(this.hello).to.equal("world");
+				done();
+			});
+		});
 	});
 });

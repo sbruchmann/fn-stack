@@ -85,7 +85,7 @@ FNStack.prototype.run = function run(args, callback) {
 			return;
 		}
 
-		callback.apply(null, concat.call([null], args));
+		callback.apply(context, concat.call([null], args));
 	});
 
 	return this;
