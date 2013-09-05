@@ -27,11 +27,11 @@ function FNStack() {
 
 /**
  * Specifies the context which all middleware will be bound to.
- * @param  {Object} context
+ * @param  {Object} ctx
  * @return {FNStack}
  */
-FNStack.prototype.context = function context(context) {
-	this._context = context;
+FNStack.prototype.context = function context(ctx) {
+	this._context = ctx;
 	return this;
 };
 
