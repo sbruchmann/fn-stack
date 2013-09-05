@@ -35,18 +35,12 @@ FNStack.prototype.context = function context(ctx) {
 };
 
 /**
- * Adds one or more functions to the current stack. This functions
- * is aliased as `use`.
- * @param  {Function} fn
- * @return {FNStack}
+ * Alias for FNStack#use. (Deprecated)
+ * @type {Function}
+ * @deprecated Since 0.1.4
  */
-FNStack.prototype.push =
-FNStack.prototype.use = function push() {
-	var args = _.reject(slice.call(arguments, 0), function iterator(val) {
-		return typeof val !== "function";
-	});
-
-	this.stack = concat.call(this.stack, args);
+FNStack.prototype.push = function push() {
+	this.use.apply(this, slice.call(arguments));
 	return this;
 };
 
@@ -88,6 +82,20 @@ FNStack.prototype.run = function run(args, callback) {
 		callback.apply(context, concat.call([null], args));
 	});
 
+	return this;
+};
+
+/**
+ * Adds one or more functions to the current stack.
+ * @param  {Function} fn
+ * @return {FNStack}
+ */
+FNStack.prototype.use = function push() {
+	var args = _.reject(slice.call(arguments, 0), function iterator(val) {
+		return typeof val !== "function";
+	});
+
+	this.stack = concat.call(this.stack, args);
 	return this;
 };
 
