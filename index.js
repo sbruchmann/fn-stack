@@ -72,12 +72,13 @@ FNStack.prototype.run = function run(args, callback) {
 			args[callbackIndex] = function $next(err) {
 				if (asyncErr(err, next)) {
 					return;
-				};
+				}
 
 				next(null);
 			};
+
 			fn.apply(context, args);
-		}
+		};
 	});
 
 	async.series(queue, function onQueueCompleted(err) {
