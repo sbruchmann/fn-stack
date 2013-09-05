@@ -1,11 +1,10 @@
 "use strict";
 
-// Module dependencies
+// Module Dependencies & Initializations
 var _ = require("lodash");
 var async = require("async");
 var asyncErr = require("async-stacktrace");
 
-// Cache references to `Array.prototype` methods
 var arrProto = Array.prototype;
 var concat = arrProto.concat;
 var slice = arrProto.slice;
