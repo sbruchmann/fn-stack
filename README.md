@@ -10,7 +10,7 @@ Via [npm][npm]:
 Via [git][git]:<br />
 
 ```sh
-$ git clone https://github.com/sbruchmann/fn-stack  
+$ git clone git@github.com:sbruchmann/fn-stack.git
 $ cd fn-stack/
 $ npm install
 ```
