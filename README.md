@@ -1,4 +1,5 @@
 # [fn-stack](http://github.com/sbruchmann/fn-stack)
+# fn-stack
 
 Use functions as generic middleware (similar to [stack by @creationix][stack]).
 
