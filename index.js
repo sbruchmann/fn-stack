@@ -1,7 +1,6 @@
 "use strict";
 
 // Module Dependencies & Initializations
-var _ = require("lodash");
 var async = require("async");
 var asyncErr = require("async-stacktrace");
 
@@ -14,8 +13,8 @@ var slice = arrProto.slice;
  * @constructor
  */
 function FNStack() {
-	var stack = _.reject(slice.call(arguments, 0), function iterator(val) {
-		return typeof val !== "function";
+	var stack = slice.call(arguments, 0).filter(function iterator(val) {
+		return typeof val === "function";
 	});
 
 	this._context = null;
@@ -60,7 +59,7 @@ FNStack.prototype.run = function run(args, callback) {
 	}
 
 	callbackIndex = args.length;
-	queue = _.map(this.stack, function iterator(fn) {
+	queue = this.stack.map(function iterator(fn) {
 		return function task(next) {
 			args[callbackIndex] = function $next(err) {
 				if (asyncErr(err, next)) {
@@ -91,7 +90,7 @@ FNStack.prototype.run = function run(args, callback) {
  * @return {FNStack}
  */
 FNStack.prototype.use = function push() {
-	var args = _.reject(slice.call(arguments, 0), function iterator(val) {
+	var args = slice.call(arguments, 0).filter(function iterator(val) {
 		return typeof val !== "function";
 	});
 
