@@ -1,6 +1,6 @@
-# [fn-stack](http://github.com/sbruchmann/fn-stack)
+# fn-stack
 
-Use functions as generic middleware (similar to [stack by @creationix][stack]).
+Use functions as generic middleware (similar to [stack][stack] by [creationix][creationix]).
 
 ## Installation
 
@@ -10,7 +10,7 @@ Via [npm][npm]:
 Via [git][git]:<br />
 
 ```sh
-$ git clone https://github.com/sbruchmann/fn-stack  
+$ git clone git@github.com:sbruchmann/fn-stack.git
 $ cd fn-stack/
 $ npm install
 ```
@@ -39,6 +39,7 @@ stack.run(["Hello, world!"], function onDone(err) {
 });
 ```
 
+[creationix]: http://creationix.com
 [git]: http://git-scm.org
 [npm]: http://npmjs.org
-[stack]: https://github.com/creationix/stack
+[stack]: https://npmjs.org/stack
