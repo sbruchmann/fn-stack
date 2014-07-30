@@ -12,11 +12,7 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test.js"
   },
-  "author": {
-    "email": "steffen.bruchmann@gmail.com",
-    "name": "Steffen Bruchmann",
-    "url": "http://sbruchmann.github.io/"
-  },
+  "author": "Steffen Bruchmann <hi@sbruchmann.me> (http://sbruchmann.me)",
   "devDependencies": {
     "chai": "~1.6.1",
     "mocha": "~1.11.0"
