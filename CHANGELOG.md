@@ -2,6 +2,7 @@
 
 1.0.0
   * Removed deprecated `FNStack#push`
+  * Add `browser` directive to `package.json`
 
 0.1.4
   * Callback is now run in the same context as middleware

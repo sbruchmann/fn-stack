@@ -6,6 +6,8 @@
     "type": "git",
     "url": "git://github.com/sbruchmann/fn-stack.git"
   },
+  "main": "./index.js",
+  "browser": "./index.js",
   "homepage": "https://github.com/sbruchmann/fn-stack",
   "bugs": "https://github.com/sbruchmann/fn-stack/issues",
   "license": "MIT",
