@@ -13,14 +13,14 @@ var slice = arrProto.slice;
  * @constructor
  */
 function FNStack() {
-	var stack = slice.call(arguments, 0).filter(function iterator(val) {
-		return typeof val === "function";
-	});
+    var stack = slice.call(arguments, 0).filter(function iterator(val) {
+        return typeof val === "function";
+    });
 
-	this._context = null;
-	this.stack = stack;
+    this._context = null;
+    this.stack = stack;
 
-	return this;
+    return this;
 }
 
 /**
@@ -29,8 +29,8 @@ function FNStack() {
  * @return {FNStack}
  */
 FNStack.prototype.context = function context(ctx) {
-	this._context = ctx;
-	return this;
+    this._context = ctx;
+    return this;
 };
 
 /**
@@ -40,38 +40,38 @@ FNStack.prototype.context = function context(ctx) {
  * @return {FNStack}
  */
 FNStack.prototype.run = function run(args, callback) {
-	var context = this._context;
-	var callbackIndex, queue;
+    var context = this._context;
+    var callbackIndex, queue;
 
-	if (!callback && typeof args === "function") {
-		callback = args;
-		args = [];
-	}
+    if (!callback && typeof args === "function") {
+        callback = args;
+        args = [];
+    }
 
-	callbackIndex = args.length;
-	queue = this.stack.map(function iterator(fn) {
-		return function task(next) {
-			args[callbackIndex] = function $next(err) {
-				if (asyncErr(err, next)) {
-					return;
-				}
+    callbackIndex = args.length;
+    queue = this.stack.map(function iterator(fn) {
+        return function task(next) {
+            args[callbackIndex] = function $next(err) {
+                if (asyncErr(err, next)) {
+                    return;
+                }
 
-				next(null);
-			};
+                next(null);
+            };
 
-			fn.apply(context, args);
-		};
-	});
+            fn.apply(context, args);
+        };
+    });
 
-	async.series(queue, function onQueueCompleted(err) {
-		if (asyncErr(err, callback)) {
-			return;
-		}
+    async.series(queue, function onQueueCompleted(err) {
+        if (asyncErr(err, callback)) {
+            return;
+        }
 
-		callback.apply(context, concat.call([null], args));
-	});
+        callback.apply(context, concat.call([null], args));
+    });
 
-	return this;
+    return this;
 };
 
 /**
@@ -80,12 +80,12 @@ FNStack.prototype.run = function run(args, callback) {
  * @return {FNStack}
  */
 FNStack.prototype.use = function use() {
-	var args = slice.call(arguments, 0).filter(function iterator(val) {
-		return typeof val !== "function";
-	});
+    var args = slice.call(arguments, 0).filter(function iterator(val) {
+        return typeof val !== "function";
+    });
 
-	this.stack = concat.call(this.stack, args);
-	return this;
+    this.stack = concat.call(this.stack, args);
+    return this;
 };
 
 module.exports = FNStack;
