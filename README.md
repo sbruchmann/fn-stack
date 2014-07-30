@@ -1,6 +1,6 @@
 # fn-stack
 
-Use functions as generic middleware (similar to [stack][stack] by [creationix][creationix]).
+Use generic middleware in your JavaScript applications (similar to [stack][stack] by [creationix][creationix]).
 
 ## Installation
 
