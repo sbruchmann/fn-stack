@@ -25,8 +25,8 @@ function FNStack() {
 
 /**
  * Specifies the context which all middleware will be bound to.
- * @param  {Object} ctx
- * @return {FNStack}
+ * @param  {!Object} ctx
+ * @return {!FNStack}
  */
 FNStack.prototype.context = function context(ctx) {
     this._context = ctx;
@@ -35,9 +35,9 @@ FNStack.prototype.context = function context(ctx) {
 
 /**
  * Runs the current stack.
- * @param  {Array}    args     Arguments for functions in the stack
- * @param  {Function} callback
- * @return {FNStack}
+ * @param  {!Array} args - Arguments for functions in the stack
+ * @param  {!Function<?Error>} callback
+ * @return {!FNStack}
  */
 FNStack.prototype.run = function run(args, callback) {
     var context = this._context;
@@ -76,8 +76,8 @@ FNStack.prototype.run = function run(args, callback) {
 
 /**
  * Adds one or more functions to the current stack.
- * @param  {Function} fn
- * @return {FNStack}
+ * @param  {(!Function<..., Function<?Error>>|Array<Function>)} fn
+ * @return {!FNStack}
  */
 FNStack.prototype.use = function use() {
     var args = slice.call(arguments, 0).filter(function iterator(val) {
