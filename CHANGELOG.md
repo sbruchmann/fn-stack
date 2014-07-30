@@ -1,5 +1,8 @@
 # Changelog
 
+1.0.0
+  * Removed deprecated `FNStack#push`
+
 0.1.4
   * Callback is now run in the same context as middleware
   * Deprecated FNStack#push in favor of FNStack#use

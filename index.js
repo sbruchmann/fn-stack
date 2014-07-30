@@ -34,16 +34,6 @@ FNStack.prototype.context = function context(ctx) {
 };
 
 /**
- * Alias for FNStack#use. (Deprecated)
- * @type {Function}
- * @deprecated Since 0.1.4
- */
-FNStack.prototype.push = function push() {
-	this.use.apply(this, slice.call(arguments));
-	return this;
-};
-
-/**
  * Runs the current stack.
  * @param  {Array}    args     Arguments for functions in the stack
  * @param  {Function} callback
@@ -89,7 +79,7 @@ FNStack.prototype.run = function run(args, callback) {
  * @param  {Function} fn
  * @return {FNStack}
  */
-FNStack.prototype.use = function push() {
+FNStack.prototype.use = function use() {
 	var args = slice.call(arguments, 0).filter(function iterator(val) {
 		return typeof val !== "function";
 	});

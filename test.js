@@ -20,7 +20,7 @@ describe("fn-stack", function() {
 			done();
 		};
 
-		this.stack.push(function(value, next) {
+		this.stack.use(function(value, next) {
 			process.nextTick(function() {
 				expect(value).to.be.a("boolean");
 				expect(value).to.equal(true);
@@ -32,13 +32,13 @@ describe("fn-stack", function() {
 	});
 
 	it("should add only on callback function", function(done) {
-		this.stack.push(function(value, next) {
+		this.stack.use(function(value, next) {
 			expect(value).to.be.a("string");
 			expect(value).to.equal("foo");
 			next(null);
 		});
 
-		this.stack.push(function(value, next) {
+		this.stack.use(function(value, next) {
 			expect(arguments.length).to.equal(2);
 			next(null);
 		});
@@ -63,7 +63,7 @@ describe("fn-stack", function() {
 			done();
 		};
 
-		this.stack.push(function(next) {
+		this.stack.use(function(next) {
 			expect(arguments.length).to.equal(1);
 			next(null);
 		});
@@ -102,7 +102,7 @@ describe("fn-stack", function() {
 
 			this.stack.context(ctx);
 
-			this.stack.push(function(next) {
+			this.stack.use(function(next) {
 				process.nextTick(next);
 			});
 
