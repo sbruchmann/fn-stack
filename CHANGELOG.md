@@ -2,7 +2,7 @@
 
 1.0.0
   * Removed deprecated `FNStack#push`
-  * Add `browser` directive to `package.json`
+  * Add browser support (via [browserify](https://npmjs.org/package/browserify))
 
 0.1.4
   * Callback is now run in the same context as middleware
