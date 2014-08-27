@@ -16,11 +16,11 @@
   },
   "author": "Steffen Bruchmann <hi@sbruchmann.me> (http://sbruchmann.me)",
   "devDependencies": {
-    "chai": "~1.6.1",
-    "mocha": "~1.11.0"
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4"
   },
   "dependencies": {
-    "async": "~0.2.9",
+    "async": "^0.9.0",
     "async-stacktrace": "0.0.2"
   }
 }
