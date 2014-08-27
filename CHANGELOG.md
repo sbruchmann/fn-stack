@@ -1,5 +1,8 @@
 # Changelog
 
+1.1.0
+  * Updated dependencies
+
 1.0.0
   * Removed deprecated `FNStack#push`
   * Add browser support (via [browserify](https://npmjs.org/package/browserify))
