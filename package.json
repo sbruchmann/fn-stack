@@ -1,6 +1,6 @@
 {
   "name": "fn-stack",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Runs functions asynchronously.",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "mocha": "^1.21.4"
   },
   "dependencies": {
-    "async": "^0.9.0",
-    "async-stacktrace": "0.0.2"
+    "async-stacktrace": "0.0.2",
+    "neo-async": "^0.5.3"
   }
 }

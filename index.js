@@ -1,7 +1,7 @@
 "use strict";
 
 // Module Dependencies & Initializations
-var async = require("async");
+var async = require("neo-async");
 var asyncErr = require("async-stacktrace");
 
 var arrProto = Array.prototype;
